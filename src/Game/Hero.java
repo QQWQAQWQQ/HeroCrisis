@@ -10,7 +10,7 @@ public class Hero extends Role {
     //存放键盘按键
     private int[] keys;
     //
-    private boolean bL=false, bU=false, bR=false, bD=false; //閿洏鏂瑰悜閿�
+    private boolean bL=false, bU=false, bR=false, bD=false;
 
     //定义英雄的属性
     public Hero(int x, int y, int keyGroup, World world) {
@@ -59,11 +59,31 @@ public class Hero extends Role {
         else if(key == keys[1]) bU = true;//向上
         else if(key == keys[2]) bR = true;//向右
         else if(key == keys[3]) bD = true;//向下
-        //普通公鸡
+        if(key == keys[0]) {bL = true;
+            String filepath = "D:\\javacode\\HeroCrisis\\src\\Music\\jiao.wav";
+            music musicObject = new music();
+            musicObject.playMusic(filepath);
+        }//向左
+        else if(key == keys[1]) {bU = true;
+            String filepath = "D:\\javacode\\HeroCrisis\\src\\Music\\jiao.wav";
+            music musicObject = new music();
+            musicObject.playMusic(filepath);
+        }//向上
+        else if(key == keys[2]) {bR = true;
+            String filepath = "D:\\javacode\\HeroCrisis\\src\\Music\\jiao.wav";
+            music musicObject = new music();
+            musicObject.playMusic(filepath);
+        }//向右
+        else if(key == keys[3]) {bD = true;
+            String filepath = "D:\\javacode\\HeroCrisis\\src\\Music\\jiao.wav";
+            music musicObject = new music();
+            musicObject.playMusic(filepath);
+        }//向下
+        //普通攻击
         else if(key == keys[4] && this.getCurrentWeapon().getColdDown() == 0) {
             this.getCurrentWeapon().setState();
             this.getCurrentWeapon().setColdDown();
-            String filepath = "D:\\zhang\\MUSIC\\ji.wav";
+            String filepath = "D:\\javacode\\HeroCrisis\\src\\Music\\ji.wav";
             music musicObject = new music();
             musicObject.playMusic(filepath);
         }
@@ -77,7 +97,7 @@ public class Hero extends Role {
             if(weapon instanceof Fireball) {
                 ((Fireball) this.getCurrentWeapon()).setUltimateState();
                 this.getCurrentWeapon().setColdDown();
-                String filepath = "D:\\zhang\\MUSIC\\fireball.wav";
+                String filepath = "D:\\javacode\\HeroCrisis\\src\\Music\\fireball.wav";
                 music musicObject = new music();
                 musicObject.playMusic(filepath);
             }
